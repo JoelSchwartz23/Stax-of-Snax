@@ -6,7 +6,7 @@ let ObjectId = Schema.Types.ObjectId
 
 let rating = new Schema({
   creatorId: { type: ObjectId, ref: 'User' },
-  rating: { type: Number }
+  rating: { type: Number, default: 0 }
 })
 
 // let comment = new Schema({

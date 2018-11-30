@@ -8,17 +8,23 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-//get comment and its comments
-router.get('/:id/comments', (req, res, next) => {
-  Comments.findById(req.params.id)
-    .then(comment => {
-      Comments.find({ commentId: comment._id })
-        .then(comments => {
-          return res.send({ comment, comments })
-        })
-    })
+router.get("/:snackId", (req, res, next) => {
+  Comments.find({})
+    .then(comments => res.send(comments))
     .catch(next)
 })
+
+//get comment and its comments
+// router.get('/:id/comments', (req, res, next) => {
+//   Comments.findById(req.params.id)
+//     .then(comment => {
+//       Comments.find({ commentId: comment._id })
+//         .then(comments => {
+//           return res.send({ comment, comments })
+//         })
+//     })
+//     .catch(next)
+// })
 
 //post/create a new comment
 router.post('/:snackId', (req, res, next) => {
