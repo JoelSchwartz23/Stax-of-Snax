@@ -11,9 +11,9 @@ server.use(bodyParser.urlencoded({ extended: true }))
 server.use(express.static(__dirname + '/public'))
 
 //Auth routes
-// let auth = require('./server/auth/routes')
-// server.use(auth.session)
-// server.use('/account', auth.router)
+let auth = require('./server/auth/routes')
+server.use(auth.session)
+server.use('/account', auth.router)
 
 //Allow users to get data when not logged in
 server.use("*", (req, res, next) => {
@@ -30,10 +30,10 @@ server.use("*", (req, res, next) => {
 })
 
 
+let snaxRoute = require("./server/routes/snax-route")
 
 
-
-
+server.use('/api/snax', snaxRoute)
 
 
 
