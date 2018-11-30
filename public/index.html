@@ -13,26 +13,42 @@
 </head>
 
 <body>
+
+
   <div class="container-fluid">
-    <div class="row-header">
-      <div class="col-4">
-        <h1>Stax o' Snax</h1>
+    <!-- HEADER -->
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Stax of Snax</h3>
       </div>
-      <div class="col-4 offset-4">
-        <buttons>
-          <h4>Add a Snack</h4>
-        </buttons>
-        <buttons>
-          <h4>Log In</h4>
-        </buttons>
-        <buttons>
-          <h4>Sign Up</h4>
-        </buttons>
+      <div class="col-sm-2">
+        <button>Add a snack</button>
+      </div>
+      <div class="col-sm-2">
+        <button>Login</button>
+      </div>
+      <div class="col-sm-2">
+        <button>Sign Up</button>
       </div>
     </div>
 
-    <div class="row-cards"></div>
+    <!-- ROWS OF CARDS -->
+    <div class="row-cards">
+      <div class="card-deck">
+        <div class="card">
+          <img class="card-img-top" src="//placehold.it/250x250">
+          <div class="card-body">
+            <span><i class="fas fa-cookie-bite"></i></span>
+            <span><i class="fas fa-cookie-bite"></i></span>
+            <span><i class="fas fa-cookie-bite"></i></span>
+            <span><i class="fas fa-cookie-bite"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
   <script src="app/main.js"></script>
