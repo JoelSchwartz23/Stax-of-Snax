@@ -21,7 +21,7 @@ router.get('/:id/comments', (req, res, next) => {
 })
 
 //post/create a new comment
-router.post('/', (req, res, next) => {
+router.post('/:snackId', (req, res, next) => {
   Comments.create(req.body)
     .then(comment => res.send(comment))
     .catch(next)
