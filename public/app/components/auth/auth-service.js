@@ -29,6 +29,7 @@ export default class AuthService {
     _auth.post('register', creds)
       .then(res => {
         _user = res.data
+        console.log('registered')
         draw()
       })
       .catch(err => {

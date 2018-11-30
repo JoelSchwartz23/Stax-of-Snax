@@ -1,14 +1,10 @@
 
-
 let _authService = {}
-
-
 
 function drawUserLogin() {
   console.log('Not Logged In')
   document.getElementById('login').innerHTML = `
-  <button class="btn btn-success" onclick="app.controllers.authController.login()">Log In</button>
-
+  <button class="btn btn-primary" onclick="app.controllers.authController.login()">Log In</button>
   `
 }
 
@@ -61,16 +57,16 @@ export default class AuthController {
   <form>
   <div class="form-group" onsubmit="app.controllers.authController.register(event)">
       <label for="usernameInput">Username</label>
-      <input type="text" class="form-control" id="usernameInput">
+      <input type="text" name="username" class="form-control" id="usernameInput">
    </div>
     <div class="form-group">
       <label for="emailInput">Email Address</label>
-      <input type="email" class="form-control" id="emailInput">
+      <input type="email" name="email" class="form-control" id="emailInput">
         <small class="form-text text-muted">We'll never share your email with anyone</small>
    </div>
       <div class="form-group">
         <label for="passwordInput">Password</label>
-        <input type="password" class="form-control" id="passwordInput">
+        <input type="password" name="password" class="form-control" id="passwordInput">
     </div>
         <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -78,6 +74,15 @@ export default class AuthController {
     document.getElementById('main-content').innerHTML = template
   }
 
-
+  register(event) {
+    event.preventDefault();
+    let creds = {
+      username: event.target.username.value,
+      email: event.target.email.value,
+      password: event.target.password.value
+    }
+    console.log('registered!')
+    _authService.register(creds, drawLogout)
+  }
 
 }
