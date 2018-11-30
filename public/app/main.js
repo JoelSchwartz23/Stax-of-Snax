@@ -8,7 +8,7 @@ let auth = new AuthService()
 class App {
   constructor() {
     this.controllers = {
-      authController: new AuthController()
+      authController: new AuthController(auth)
 
     }
   }
