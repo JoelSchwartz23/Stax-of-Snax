@@ -12,6 +12,11 @@ function drawUserLogin() {
   `
 }
 
+function drawLogout() {
+  console.log('logged in')
+  document.getElementById('login').innerHTML = `<button onclick="app.controllers.authController.logout()">Log Out</button>`
+}
+
 
 export default class AuthController {
   constructor() {
@@ -21,7 +26,7 @@ export default class AuthController {
   showLoginForm() {
     let template = `
     <h1>LOG IN HERE</h1>
-  <form>
+  <form onsubmit="app.controllers.authController.login(event)">
     <div class="form-group">
       <label for="emailInput">Email Address</label>
       <input type="email" class="form-control" id="emailInput">
@@ -37,11 +42,24 @@ export default class AuthController {
     document.getElementById('main-content').innerHTML = template
   }
 
+  login(event) {
+    event.preventDefault()
+    let creds = {
+      email: event.target.email.value,
+      password: event.target.password.value
+    }
+    _authService.login(creds, drawLogout)
+  }
+
+  logout() {
+    _authService.logout(drawUserLogin)
+  }
+
   showSignUpForm() {
     let template = `
     <h1>SIGN UP HERE</h1>
   <form>
-  <div class="form-group">
+  <div class="form-group" onsubmit="app.controllers.authController.register(event)">
       <label for="usernameInput">Username</label>
       <input type="text" class="form-control" id="usernameInput">
    </div>
@@ -59,5 +77,7 @@ export default class AuthController {
 `
     document.getElementById('main-content').innerHTML = template
   }
+
+
 
 }
