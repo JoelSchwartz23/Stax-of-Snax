@@ -2,12 +2,17 @@
 let _auth = axios.create({
   baseURL: '/account',
   withCredentials: true,
-  timeout: 3000
+  timeout: 5000
 })
 
 let _user = {}
 
 export default class AuthService {
+  constructor() { }
+
+  get user() {
+    return _user
+  }
 
   login(creds, draw) {
     _auth.post('login', creds)
@@ -34,6 +39,7 @@ export default class AuthService {
   authenticate(drawOnSuccess, drawOnFail) {
     _auth.get('authenticate')
       .then(res => {
+        console.log(res.data)
         _user = res.data
         drawOnSuccess()
       })
