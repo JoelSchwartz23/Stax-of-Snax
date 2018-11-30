@@ -22,19 +22,19 @@
         <h3>Stax of Snax</h3>
       </div>
       <div class="col-sm-2">
-        <button>Add a snack</button>
+        <button class="btn btn-primary">Add a snack</button>
       </div>
       <div class="col-sm-2">
-        <button>Login</button>
+        <button id="login" class="btn btn-primary" onclick="app.controllers.authController.showLoginForm()">Login</button>
       </div>
       <div class="col-sm-2">
-        <button>Sign Up</button>
+        <button class="btn btn-primary" onclick="app.controllers.authController.showSignUpForm()">Sign Up</button>
       </div>
     </div>
 
     <!-- ROWS OF CARDS -->
     <!-- look at image overlays -->
-    <div class="row-cards">
+    <div class="row-cards" id="main-content">
       <div class="card-deck">
         <div class="card">
           <img class="card-img-top" src="//placehold.it/250x250">
@@ -58,7 +58,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-  <script src="app/main.js"></script>
+  <script src="app/main.js" type="module"></script>
 </body>
 
 </html>
