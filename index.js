@@ -23,7 +23,7 @@ server.use("*", (req, res, next) => {
   if (!req.session.uid) {
     return next(new Error("Please login to continue"))
   }
-  if (req.method == "POST") {
+  if (req.method == "POST" || req.method == "PUT") {
     req.body.creatorId = req.session.uid
   }
   next()
@@ -31,10 +31,10 @@ server.use("*", (req, res, next) => {
 
 
 let snaxRoute = require("./server/routes/snax-route")
-
+let ratingsRoute = require('./server/routes/ratings-route')
 
 server.use('/api/snax', snaxRoute)
-
+// server.use('/api/')
 
 
 
