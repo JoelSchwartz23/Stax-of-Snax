@@ -37,7 +37,7 @@ router.post('/', (req, res, next) => {
 
 //delete a snack
 router.delete('/:id', (req, res, next) => {
-  Snacks.findOneAndUpdate({ _id: req.params.id, creatorId: req.session.uid }, { description: 'No longer Available', price: 0, img: 'http://placehold.it/200x200', brand: 'A brand', name: 'Enter a name' })
+  Snacks.findOneAndDelete({ _id: req.params.id, creatorId: req.session.uid })
     .then(snack => res.send({ message: "Deleted", data: snack }))
     .catch(next)
 })
