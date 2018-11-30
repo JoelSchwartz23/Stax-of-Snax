@@ -32,10 +32,11 @@ server.use("*", (req, res, next) => {
 
 let snaxRoute = require("./server/routes/snax-route")
 let ratingsRoute = require('./server/routes/ratings-route')
+let commentsRoute = require('./server/routes/comments-route')
 
 server.use('/api/snax', snaxRoute)
-// server.use('/api/')
-
+server.use('/api/ratings', ratingsRoute)
+server.use('/api/comments', commentsRoute)
 
 
 

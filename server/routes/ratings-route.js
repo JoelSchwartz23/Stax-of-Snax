@@ -6,12 +6,16 @@ let Snacks = require('../models/snack-model')
 router.put("/:snackId", (req, res, next) => {
   Snacks.findById(req.params.snackId)
     .then(snack => {
-      let foundRating = snack.ratings.find(s => s.userId == req.session.uid)
+      let foundRating = snack.ratings.find(r => r.creatorId.toString() == req.session.uid.toString())
       if (foundRating) {
         foundRating.rating = req.body.rating
       }
       else {
-        snack.ratings.push(req.body)
+        let newRating = {
+          creatorId: req.session.uid,
+          rating: req.body.rating
+        }
+        snack.ratings.push(newRating)
       }
       snack.save(err => {
         if (err) {
