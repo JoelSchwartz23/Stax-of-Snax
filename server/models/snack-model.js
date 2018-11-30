@@ -1,7 +1,5 @@
 let mongoose = require('mongoose')
-let bcrypt = require('bcryptjs')
 let Schema = mongoose.Schema
-const SALT = 15
 let name = "Snack"
 let ObjectId = Schema.Types.ObjectId
 
@@ -11,11 +9,11 @@ let rating = new Schema({
   rating: { type: Number }
 })
 
-let comment = new Schema({
-  creatorId: { type: ObjectId, ref: 'User' },
-  description: { type: String },
-  date: { type: Number, default: Date.now(), required: true }
-})
+// let comment = new Schema({
+//   creatorId: { type: ObjectId, ref: 'User' },
+//   description: { type: String },
+//   date: { type: Number, default: Date.now(), required: true }
+// })
 
 //user schema
 let schema = new Schema({
@@ -25,7 +23,7 @@ let schema = new Schema({
   img: { type: String, required: true },
   description: { type: String, required: true },
   ratings: [rating],
-  comments: [comment],
+  // comments: [comment],
   creatorId: { type: ObjectId, ref: "User", required: true },
 
   // originality: { type: String, required: true },

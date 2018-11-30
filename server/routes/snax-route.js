@@ -1,6 +1,6 @@
 let router = require('express').Router()
 let Snacks = require('../models/snack-model')
-// let Comments = require('../models/comment-model')
+let Comments = require('../models/comment-model')
 
 //GET
 router.get('/', (req, res, next) => {
@@ -16,17 +16,17 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
-// //get snack and its comments
-// router.get('/:id/comments', (req, res, next) => {
-//   Snacks.findById(req.params.id)
-//     .then(snack => {
-//       Comments.find({ snackId: snack._id })
-//         .then(comments => {
-//           return res.send({ snack, comments })
-//         })
-//     })
-//     .catch(next)
-// })
+//get snack and its comments
+router.get('/:id/comments', (req, res, next) => {
+  Snacks.findById(req.params.id)
+    .then(snack => {
+      Comments.find({ snackId: snack._id })
+        .then(comments => {
+          return res.send({ snack, comments })
+        })
+    })
+    .catch(next)
+})
 
 //post/create a new snack
 router.post('/', (req, res, next) => {
