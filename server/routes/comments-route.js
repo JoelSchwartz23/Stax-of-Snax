@@ -27,8 +27,8 @@ router.post("/:commentId/subcomment", (req, res, next) => {
     .then(comment => {
       let newSubComment = {
         creatorId: req.session.uid,
-        username: req.session.uid.username,
-        description: req.body.comment
+        username: req.session.username,
+        description: req.body.description
       }
       comment.subcomments.push(newSubComment)
       comment.save(err => {
