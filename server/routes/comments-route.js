@@ -17,7 +17,7 @@ router.get("/:snackId", (req, res, next) => {
 
 //post/create a new comment
 router.post('/:snackId', (req, res, next) => {
-  Comments.create({ snackId: req.params.snackId, creatorId: req.session.uid, description: req.body.description })
+  Comments.create({ snackId: req.params.snackId, creatorId: req.session.uid, description: req.body.description, username: req.session.uid.username })
     .then(comment => res.send(comment))
     .catch(next)
 })
@@ -27,6 +27,7 @@ router.post("/:commentId/subcomment", (req, res, next) => {
     .then(comment => {
       let newSubComment = {
         creatorId: req.session.uid,
+        username: req.session.uid.username,
         description: req.body.comment
       }
       comment.subcomments.push(newSubComment)

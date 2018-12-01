@@ -8,7 +8,10 @@ export default class Snack {
     data.ratings.forEach(ratingObj => {
       this.rating += ratingObj.rating
     });
-    this.rating = Math.floor(this.rating / data.ratings.length)
+    if (this.rating) {
+      this.rating = Math.floor(this.rating / data.ratings.length)
+    }
+
   }
 
   getSnackTemplate() {
@@ -37,14 +40,17 @@ export default class Snack {
 
   getDetailedTemplate(comments) {
     let commentTemplate = ''
-    comments.forEach(c => commentTemplate += `<li>${c.description}</li>`)
+    if (comments) {
+      comments.forEach(c => commentTemplate += `<li>${c.description}</li>`)
+    }
     let cookies = ''
     for (let r = 0; r < this.rating; r++) {
-      cookies += `<i class="fas fa-cookie-bite"></i>`
+      cookies += `<i class="fas fa-cookie-bite" onclick="app.controllers.snackController.rateSnack(${r + 1}, '${this._id}')"></i>`
     }
+    // debugger
     if (this.rating < 5) {
-      for (let r = 0; r < 5 - this.rating; r++) {
-        cookies += `<i class="fas lighten fa-cookie-bite"></i>`
+      for (let r = 1; r <= 5 - this.rating; r++) {
+        cookies += `<i class="fas lighten fa-cookie-bite" onclick="app.controllers.snackController.rateSnack(${r + this.rating}, '${this._id}')"></i>`
       }
     }
     return `
@@ -53,11 +59,16 @@ export default class Snack {
         <img src="${this.img}" onclick="app.controllers.snackController.snackDetails('${this._id}')">
         <div style="background-color: white">
           <p>${this.name} </p>
-          <p>${this.name} </p>
           <span id="rating">${cookies} (${this.ratings.length})</span>
+          <form onsubmit="app.controllers.snackController.addComment(event, '${this._id}')">
+            <div class="form-group">
+              <label for="commentDescription">Comment</label>
+              <textarea name="description" class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Add Comment</button>
+            </form>
           <ul>${commentTemplate}</ul>
-      </>
-      </div>
+        </div>
      </div>
      `
 

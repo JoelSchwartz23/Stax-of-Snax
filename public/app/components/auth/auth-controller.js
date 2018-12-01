@@ -8,6 +8,7 @@ function drawUserLogin() {
   <button class="btn btn-primary" onclick="app.controllers.authController.showLoginForm()">Log In</button>
   `
   document.getElementById('signUp').innerHTML = `<button class="btn btn-primary" onclick="app.controllers.authController.showSignUpForm()">Sign Up</button>`
+  document.getElementById("add").hidden = true
 }
 
 function drawLogout() {
@@ -15,6 +16,7 @@ function drawLogout() {
   document.getElementById('login').innerHTML = `<button class="btn btn-success" onclick="app.controllers.authController.logout()">Log Out</button>`
   document.getElementById('signUp').innerHTML = ``
   document.getElementById('loginStuff').innerHTML = ``
+  document.getElementById("add").hidden = false
 }
 
 

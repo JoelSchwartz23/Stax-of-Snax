@@ -16,7 +16,7 @@ let schema = new Schema({
   username: { type: String, ref: "User" },
   rating: { type: Number, required: true, default: 0 },
   subcomments: [comment],
-  snackId: { type: ObjectId, ref: "snackId" }
+  snackId: { type: ObjectId, ref: "Snack" }
 })
 
 

@@ -8,19 +8,29 @@ function getSnacks() {
   _ss.getSnacks(drawSnackData)
 }
 
-function drawSnackData() {
-  let template = ""
-  snacks = _ss.snacks
-  snacks.forEach(snack => {
-    template += snack.getSnackTemplate()
-  })
-  document.getElementById('main-content').innerHTML = template
-}
 
 export default class SnackController {
   constructor(auth) {
     _auth = auth
-    _ss.getSnacks(drawSnackData)
+    _ss.getSnacks(this.drawSnackData)
+  }
+
+  rerender() {
+    document.getElementById('main-content').hidden = false
+    document.getElementById("snack-details").innerHTML = ``
+  }
+
+  drawSnackData() {
+    document.getElementById('main-content').hidden = false
+    document.getElementById("snack-details").innerHTML = ``
+    let template = ""
+    // debugger
+    console.log("hello")
+    snacks = _ss.snacks
+    snacks.forEach(snack => {
+      template += snack.getSnackTemplate()
+    })
+    document.getElementById('main-content').innerHTML = template
   }
 
   showUser() {
@@ -30,28 +40,28 @@ export default class SnackController {
     let template = `
     <h2>Add a Snack</h2>
     <form onsubmit="app.controllers.snackController.addSnackData(event)">
-      <div class="form-group">
-        <label>Img Url</label>
-        <input name="imgURL" type="text" class="form-control" id="addSnackForm">
-      </div>
-      <div class="form-group">
-        <label>Name</label>
-        <input name="name" type="text" class="form-control" id="addSnackForm">
-      </div>
-      <div class="form-group">
-        <input name="snackBrand" type="text" class="form-control" id="addSnackForm">
-        <label>Brand</label>
-      </div>
-      <div class="form-group">
-        <label>Description</label>
-        <input name="snackDesc" type="text" class="form-control" id="addSnackForm">
-      </div>
-      <div class="form-group">
-      <label>Price</label>
-      <input name="snackPrice" type="number" step="0.01" class="form-control" id="addSnackForm">
-      </div>
-      <button class="btn btn-primary">Submit</button>
-</form>
+    <div class="form-group">
+    <label>Img Url</label>
+    <input name="imgURL" type="text" class="form-control" id="addSnackForm">
+    </div>
+    <div class="form-group">
+    <label>Name</label>
+    <input name="name" type="text" class="form-control" id="addSnackForm">
+    </div>
+    <div class="form-group">
+    <input name="snackBrand" type="text" class="form-control" id="addSnackForm">
+    <label>Brand</label>
+    </div>
+    <div class="form-group">
+    <label>Description</label>
+    <input name="snackDesc" type="text" class="form-control" id="addSnackForm">
+    </div>
+    <div class="form-group">
+    <label>Price</label>
+    <input name="snackPrice" type="number" step="0.01" class="form-control" id="addSnackForm">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     `
     document.getElementById('main-content').innerHTML = template
   }
@@ -71,17 +81,19 @@ export default class SnackController {
   snackDetails(snackId) {
     document.getElementById('main-content').hidden = true
     let selected = _ss.snacks.find(s => s._id == snackId)
-    document.getElementById('snack-details').innerHTML = selected.getDetailedTemplate(_ss.comments[snackId])
-    // let template =
-    //   `
+    let template = selected.getDetailedTemplate(_ss.comments[snackId])
+    document.getElementById('snack-details').innerHTML = template
+  }
+  rateSnack(userRating, snackId) {
+    _ss.rateSnack(this.drawSnackData, snackId, { rating: userRating })
+  }
 
-    // <div class=" my-1 col-sm-12 col-md-6 col-lg-3">
-    //     <img class="card-img-top" src="${snacks.img}" onclick="app.controllers.snackController.singleSnack()">
-    //     <div class="card-body">
-    //       <p>${this.name} </p>
-    //       <span id="rating">${cookies} (${this.ratings.length})</span>
-    //     </div>
-    //  </div>
-    //  `
+  addComment(event, snackId) {
+    event.preventDefault()
+    let data = {
+      description: event.target.description.value
+    }
+    console.log(snackId, event.target.description.value);
+    _ss.addComment(data, snackId, this.drawSnackData)
   }
 }

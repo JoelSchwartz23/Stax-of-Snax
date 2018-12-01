@@ -17,6 +17,7 @@ export default class SnackService {
     _api.get('snax').then(res => {
       console.log(res.data)
       _snacks = res.data.map(s => new Snack(s))
+      _snacks.sort((a, b) => b.rating - a.rating)
       this.getComments(drawSnackData)
     })
   }
@@ -29,7 +30,7 @@ export default class SnackService {
     // debugger
     _api.post('snax', data)
       .then(res => {
-
+        console.log(data)
         getSnacks()
       })
   }
@@ -56,4 +57,19 @@ export default class SnackService {
         draw()
       })
   }
+
+  rateSnack(callback, snackId, userRating) {
+    _api.put('ratings/' + snackId, userRating)
+      .then(res => {
+        this.getSnacks(callback)
+      })
+  }
+
+  addComment(data, snackId, callback) {
+    _api.post('comment/' + snackId, data)
+      .then(res => {
+        this.getSnacks(callback)
+      })
+  }
+
 }
