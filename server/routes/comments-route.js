@@ -2,11 +2,11 @@ let router = require('express').Router()
 let Comments = require('../models/comment-model')
 
 //GET
-router.get('/', (req, res, next) => {
-  Comments.find({})
-    .then(comments => res.send(comments))
-    .catch(next)
-})
+// router.get('/', (req, res, next) => {
+//   Comments.find({})
+//     .then(comments => res.send(comments))
+//     .catch(next)
+// })
 
 router.get("/:snackId", (req, res, next) => {
   Comments.find({ snackId: req.params.snackId })
@@ -43,7 +43,7 @@ router.post("/:commentId/subcomment", (req, res, next) => {
 
 //delete a comment
 router.delete('/:commentId', (req, res, next) => {
-  Comments.findOneAndDelete({ _id: req.params.id, creatorId: req.session.uid })
+  Comments.findOneAndDelete({ commentId: req.params.commentId, creatorId: req.session.uid })
     .then(comment => res.send({ message: "Deleted", data: comment }))
     .catch(next)
 })
