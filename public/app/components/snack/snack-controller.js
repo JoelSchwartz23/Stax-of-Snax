@@ -22,6 +22,7 @@ export default class SnackController {
     _auth = auth
     _ss.getSnacks(drawSnackData)
   }
+
   showUser() {
     console.log(_auth.user)
   }
