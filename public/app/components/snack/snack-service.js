@@ -1,3 +1,5 @@
+import Snack from "../../models/snack.js";
+
 // @ts-ignore
 let _snackApi = axios.create({
   baseURL: "/api/snax",
@@ -8,11 +10,11 @@ let _snacks = []
 
 export default class SnackService {
 
-  getSnacks(callback) {
+  getSnacks(drawSnackData) {
     _snackApi.get('').then(res => {
       console.log(res.data)
-      _snacks = res.data
-      callback()
+      _snacks = res.data.map(s => new Snack(s))
+      drawSnackData()
     })
   }
 
@@ -20,4 +22,10 @@ export default class SnackService {
     return _snacks
   }
 
+  addSnack() {
+    _snackApi.post('')
+      .then(res => {
+        _snacks = res.data.map(s => new Snack(s))
+      })
+  }
 }
