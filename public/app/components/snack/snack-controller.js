@@ -2,29 +2,20 @@ import SnackService from "./snack-service.js"
 
 let _auth = {}
 let _ss = new SnackService()
+let snacks = []
+
+function getSnacks() {
+  _ss.getSnacks(drawSnackData)
+}
 
 function drawSnackData() {
   let template = ""
-  _ss.snacks.forEach(snack => {
-    template += `
-     <div class="card-deck">
-        <div class="card">
-          <img class="card-img-top" src="${snack.img}">
-          <div class="card-body">
-            <p>${snack.name} ${console.log(snack.ratings)}</p>
-            <span><i class="fas fa-cookie-bite"></i></span>
-            <span><i class="fas fa-cookie-bite"></i></span>
-            <span><i class="fas fa-cookie-bite"></i></span>
-            <span><i class="fas fa-cookie-bite"></i></span>
-          </div>
-        </div>
-      </div>
-    
-    `
+  snacks = _ss.snacks
+  snacks.forEach(snack => {
+    template += snack.getSnackTemplate()
   })
   document.getElementById('main-content').innerHTML = template
 }
-
 
 export default class SnackController {
   constructor(auth) {
@@ -34,5 +25,7 @@ export default class SnackController {
   showUser() {
     console.log(_auth.user)
   }
-
+  addSnack() {
+    _ss.addSnack(getSnacks)
+  }
 }
