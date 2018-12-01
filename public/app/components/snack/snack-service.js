@@ -2,7 +2,7 @@ import Snack from "../../models/snack.js";
 
 // @ts-ignore
 let _api = axios.create({
-  baseURL: "/api/",
+  baseURL: "/api",
   withCredentials: true
 })
 
