@@ -28,6 +28,11 @@ transform: scale(1.02);
 }
 
 h3{
-  color: rgb(235, 235, 24);
-  text-shadow: 0px 0px 6px grey;
+  color: #ffc24f;
+  text-shadow: 0px 0px 6px black;
+}
+
+.btn{
+    background-image: linear-gradient(to bottom, #ffc24f,#e3584b );
+    color:black;
 }
