@@ -41,7 +41,13 @@ export default class Snack {
   getDetailedTemplate(comments) {
     let commentTemplate = ''
     if (comments) {
-      comments.forEach(c => commentTemplate += `<li>${c.description}</li>`)
+      comments.forEach(c => commentTemplate += `<li>${c.description} - ${c.username}<form onsubmit="app.controllers.snackController.reply(event)">
+            <div class="form-group">
+              <label for="replyCommentDescription">reply</label>
+              <input name="description" class="form-control" rows="3"></input>
+            </div>
+            <button type="submit" class="btn btn-success">Add Comment</button>
+            </form><button onclick="app.controllers.snackController.reply()"> reply </button></li>`)
     }
     let cookies = ''
     for (let r = 0; r < this.rating; r++) {
