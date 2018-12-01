@@ -18,26 +18,26 @@
   <div class="container-fluid">
     <!-- HEADER -->
     <div class="row">
-      <div class="col-sm-4 d-flex">
-        <img src="app/assets/snack (2) (1).png" class="logo" alt="logo" onclick="app.controllers.snackController.rerender()">
+      <div class="col-sm-2 d-flex">
+        <img src="app/assets/snack (2) (1).png" class="logo" alt="logo">
         <h3>Stax of Snax</h3>
       </div>
-      <div class="col-sm-2" id="add">
-        <button class="btn" onclick="app.controllers.snackController.addSnackForm()">Add a snack</button>
+      <div class="col-sm-8">
+        <button class="btn btn-lg btn-block" onclick="app.controllers.snackController.addSnackForm()">Add a snack</button>
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-1 d-flex login">
         <span id="login">
           <button class="btn" onclick="app.controllers.authController.showLoginForm()">Login</button>
         </span>
       </div>
-      <div class="col-sm-2" id="signUp">
+      <div class="col-sm-1" id="signUp">
         <button class="btn" onclick="app.controllers.authController.showSignUpForm()">Sign Up</button>
       </div>
     </div>
 
     <!-- ROWS OF CARDS -->
     <!-- look at image overlays -->
-    <div class="row" id="loginStuff"></div>
+    <div class="row mt-5 mb-5 d-flex loginform" id="loginStuff"></div>
     <div id="snack-details"></div>
     <div class="row" id="main-content">
 

@@ -25,13 +25,13 @@ export default class Snack {
       }
     }
     return `
-     
+      
     <div class=" my-1 col-sm-12 col-md-6 col-lg-3">
       <div class="card">
         <img class="card-img-top" src="${this.img}" onclick="app.controllers.snackController.snackDetails('${this._id}')">
         <div class="card-body">
-          <h5><strong>${this.name}</strong> </h5>
-          <span id="rating">${cookies} (${this.ratings.length})</span>
+          <h5 class="snacktext"strong>${this.name}</strong> </h5>
+          <span class="cookies" id="rating">${cookies} (${this.ratings.length})</span>
         </div>
       </div>
      </div>
@@ -55,9 +55,13 @@ export default class Snack {
     }
     return `
      
+    <div class="row d-flex justify-content-center">
     <div class=" my-1 col-sm-12 col-md-6 col-lg-3">
-        <img src="${this.img}" onclick="app.controllers.snackController.snackDetails('${this._id}')">
-        <div style="background-color: white">
+    <img class="snackimg" src="${this.img}" onclick="app.controllers.snackController.snackDetails('${this._id}')">
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-12 snackcomments">
           <p>${this.name} </p>
           <span id="rating">${cookies} (${this.ratings.length})</span>
           <form onsubmit="app.controllers.snackController.addComment(event, '${this._id}')">
