@@ -27,7 +27,7 @@ export default class Snack {
       <div class="card">
         <img class="card-img-top" src="${this.img}" onclick="app.controllers.snackController.snackDetails('${this._id}')">
         <div class="card-body">
-          <p>${this.name} </p>
+          <h5><strong>${this.name}</strong> </h5>
           <span id="rating">${cookies} (${this.ratings.length})</span>
         </div>
       </div>
