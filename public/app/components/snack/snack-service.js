@@ -1,20 +1,23 @@
 import Snack from "../../models/snack.js";
 
 // @ts-ignore
-let _snackApi = axios.create({
-  baseURL: "/api/snax",
+let _api = axios.create({
+  baseURL: "/api/",
   withCredentials: true
 })
 
 let _snacks = []
+let _comments = {
+  //key snackId : value [comments]
+}
 
 export default class SnackService {
 
   getSnacks(drawSnackData) {
-    _snackApi.get('').then(res => {
+    _api.get('snax').then(res => {
       console.log(res.data)
       _snacks = res.data.map(s => new Snack(s))
-      drawSnackData()
+      this.getComments(drawSnackData)
     })
   }
 
@@ -23,11 +26,34 @@ export default class SnackService {
   }
 
   addSnack(data, getSnacks) {
-    debugger
-    _snackApi.post('', data)
+    // debugger
+    _api.post('snax', data)
       .then(res => {
 
         getSnacks()
+      })
+  }
+
+  singleSnack() {
+
+  }
+  //// COMMENTS REQUESTS
+  get comments() {
+    return _comments
+  }
+  getComments(draw) {
+    _api.get('comments')
+      .then(res => {
+        res.data.forEach(comment => {
+          if (!comment.snackId) { return }
+
+          if (!_comments[comment.snackId]) {
+            _comments[comment.snackId] = []
+          }
+          _comments[comment.snackId].push(comment)
+        })
+        console.log(_comments)
+        draw()
       })
   }
 }

@@ -1,5 +1,6 @@
 export default class Snack {
   constructor(data) {
+    this._id = data._id
     this.img = data.img
     this.name = data.name
     this.ratings = data.ratings
@@ -24,7 +25,7 @@ export default class Snack {
      
     <div class=" my-1 col-sm-12 col-md-6 col-lg-3">
       <div class="card">
-        <img class="card-img-top" src="${this.img}">
+        <img class="card-img-top" src="${this.img}" onclick="app.controllers.snackController.snackDetails('${this._id}')">
         <div class="card-body">
           <p>${this.name} </p>
           <span id="rating">${cookies} (${this.ratings.length})</span>
@@ -32,5 +33,33 @@ export default class Snack {
       </div>
      </div>
      `
+  }
+
+  getDetailedTemplate(comments) {
+    let commentTemplate = ''
+    comments.forEach(c => commentTemplate += `<li>${c.description}</li>`)
+    let cookies = ''
+    for (let r = 0; r < this.rating; r++) {
+      cookies += `<i class="fas fa-cookie-bite"></i>`
+    }
+    if (this.rating < 5) {
+      for (let r = 0; r < 5 - this.rating; r++) {
+        cookies += `<i class="fas lighten fa-cookie-bite"></i>`
+      }
+    }
+    return `
+     
+    <div class=" my-1 col-sm-12 col-md-6 col-lg-3">
+      <div class="card">
+        <img class="card-img-top" src="${this.img}" onclick="app.controllers.snackController.snackDetails('${this._id}')">
+        <div class="card-body">
+          <p>${this.name} </p>
+          <span id="rating">${cookies} (${this.ratings.length})</span>
+          <ul>${commentTemplate}</ul>
+        </div>
+      </div>
+     </div>
+     `
+
   }
 }

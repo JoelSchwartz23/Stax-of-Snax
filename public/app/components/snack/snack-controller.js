@@ -68,4 +68,20 @@ export default class SnackController {
     _ss.addSnack(data, getSnacks)
   }
 
+  snackDetails(snackId) {
+    document.getElementById('main-content').hidden = true
+    let selected = _ss.snacks.find(s => s._id == snackId)
+    document.getElementById('snack-details').innerHTML = selected.getDetailedTemplate(_ss.comments[snackId])
+    // let template =
+    //   `
+
+    // <div class=" my-1 col-sm-12 col-md-6 col-lg-3">
+    //     <img class="card-img-top" src="${snacks.img}" onclick="app.controllers.snackController.singleSnack()">
+    //     <div class="card-body">
+    //       <p>${this.name} </p>
+    //       <span id="rating">${cookies} (${this.ratings.length})</span>
+    //     </div>
+    //  </div>
+    //  `
+  }
 }
