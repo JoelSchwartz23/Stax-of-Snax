@@ -1,5 +1,13 @@
+
 .card {
   max-width: 18rem;
+  box-shadow: 0px 0px 3px grey;
+  transition: .3s linear;
+}
+
+.card:hover{
+box-shadow: 5px 5px black;
+transform: scale(1.02);
 }
 
 .lighten {
