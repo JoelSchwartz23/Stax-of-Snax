@@ -50,13 +50,13 @@ export default class Snack {
     return `
      
     <div class=" my-1 col-sm-12 col-md-6 col-lg-3">
-      <div class="card">
-        <img class="card-img-top" src="${this.img}" onclick="app.controllers.snackController.snackDetails('${this._id}')">
-        <div class="card-body">
+        <img src="${this.img}" onclick="app.controllers.snackController.snackDetails('${this._id}')">
+        <div style="background-color: white">
+          <p>${this.name} </p>
           <p>${this.name} </p>
           <span id="rating">${cookies} (${this.ratings.length})</span>
           <ul>${commentTemplate}</ul>
-        </div>
+      </>
       </div>
      </div>
      `
