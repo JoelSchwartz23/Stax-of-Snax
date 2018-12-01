@@ -1,8 +1,17 @@
+.main-bg{
+  background-image: url("./photo-1532508106636-11297de1dc68.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+}
+
 
 .card {
   max-width: 18rem;
   box-shadow: 0px 0px 3px grey;
   transition: .3s linear;
+  background-color: rgba(128, 128, 128, 0.699);
 }
 
 .card:hover{
@@ -12,4 +21,13 @@ transform: scale(1.02);
 
 .lighten {
   color: lightgrey;
+}
+
+.logo{
+  display: inline;
+}
+
+h3{
+  color: rgb(235, 235, 24);
+  text-shadow: 0px 0px 6px grey;
 }
