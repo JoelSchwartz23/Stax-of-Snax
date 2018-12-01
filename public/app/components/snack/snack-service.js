@@ -73,4 +73,11 @@ export default class SnackService {
       })
   }
 
+  reply(data, commentId, callback) {
+    _api.post('comments/' + commentId, data)
+      .then(res => {
+        this.getSnacks(callback)
+      })
+  }
+
 }

@@ -96,4 +96,11 @@ export default class SnackController {
     console.log(snackId, event.target.description.value);
     _ss.addComment(data, snackId, this.drawSnackData)
   }
+  reply(event, commentId) {
+    event.preventDefault()
+    let data = {
+      description: event.target.description.value
+    }
+    _ss.reply(data, commentId, this.drawSnackData)
+  }
 }
