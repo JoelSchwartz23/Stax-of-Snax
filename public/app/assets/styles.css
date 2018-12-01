@@ -44,32 +44,12 @@ h4{
   text-shadow: 0px 0px 6px black;
 }
 
-.form-group{
-  color: #ffc24f;
-  text-shadow: 0px 0px 6px black;
-}
-
-.snacktext{
-  color: #ffc24f;
-  text-shadow: 0px 0px 6px black;
-}
-
 .login{
   justify-content: flex-end;
 }
 
 .loginform{
   justify-content: center
-}
-
-.cookies{
-  color: #ffc24f;
-  text-shadow: 0px 0px 6px black;
-}
-
-.registerform{
-  color: #ffc24f;
-  text-shadow: 0px 0px 6px black;
 }
 
  .snackcomments{
@@ -79,6 +59,12 @@ h4{
 
 .snackimg{
   width: 60vh;
+}
+
+.container-fluid{
+  color: #ffc24f;
+  text-shadow: 0px 0px 6px black;
+  font-family: 'Acme', sans-serif;
 }
 
 
