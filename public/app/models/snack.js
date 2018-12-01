@@ -32,6 +32,5 @@ export default class Snack {
       </div>
      </div>
      `
-
   }
 }
