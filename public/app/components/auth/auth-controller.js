@@ -1,16 +1,20 @@
 
 let _authService = {}
 
+
 function drawUserLogin() {
   console.log('Not Logged In')
   document.getElementById('login').innerHTML = `
-  <button class="btn btn-primary" onclick="app.controllers.authController.login()">Log In</button>
+  <button class="btn btn-primary" onclick="app.controllers.authController.showLoginForm()">Log In</button>
   `
+  document.getElementById('signUp').innerHTML = `<button class="btn btn-primary" onclick="app.controllers.authController.showSignUpForm()">Sign Up</button>`
 }
 
 function drawLogout() {
   console.log('logged in')
   document.getElementById('login').innerHTML = `<button class="btn btn-success" onclick="app.controllers.authController.logout()">Log Out</button>`
+  document.getElementById('signUp').innerHTML = ``
+  document.getElementById('loginStuff').innerHTML = ``
 }
 
 
@@ -35,7 +39,7 @@ export default class AuthController {
         <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 `
-    document.getElementById('main-content').innerHTML = template
+    document.getElementById('loginStuff').innerHTML = template
   }
 
   login(event) {
@@ -49,13 +53,15 @@ export default class AuthController {
 
   logout() {
     _authService.logout(drawUserLogin)
+
   }
 
   showSignUpForm() {
+    // debugger
     let template = `
     <h1>SIGN UP HERE</h1>
-  <form>
-  <div class="form-group" onsubmit="app.controllers.authController.register(event)">
+  <form onsubmit="app.controllers.authController.register(event)">
+  <div class="form-group" >
       <label for="usernameInput">Username</label>
       <input type="text" name="username" class="form-control" id="usernameInput">
    </div>
@@ -71,11 +77,13 @@ export default class AuthController {
         <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 `
-    document.getElementById('main-content').innerHTML = template
+    document.getElementById('loginStuff').innerHTML = template
+
   }
 
   register(event) {
     event.preventDefault();
+    // debugger
     let creds = {
       username: event.target.username.value,
       email: event.target.email.value,
