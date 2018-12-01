@@ -17,7 +17,7 @@ router.get("/:snackId", (req, res, next) => {
 
 //post/create a new comment
 router.post('/:snackId', (req, res, next) => {
-  Comments.create({ snackId: req.params.snackId, creatorId: req.session.uid, description: req.body.description, username: req.session.uid.username })
+  Comments.create({ snackId: req.params.snackId, creatorId: req.session.uid, description: req.body.description, username: req.session.username })
     .then(comment => res.send(comment))
     .catch(next)
 })

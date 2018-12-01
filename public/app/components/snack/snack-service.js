@@ -45,6 +45,7 @@ export default class SnackService {
   getComments(draw) {
     _api.get('comments')
       .then(res => {
+        _comments = {}
         res.data.forEach(comment => {
           if (!comment.snackId) { return }
 
@@ -66,7 +67,7 @@ export default class SnackService {
   }
 
   addComment(data, snackId, callback) {
-    _api.post('comment/' + snackId, data)
+    _api.post('comments/' + snackId, data)
       .then(res => {
         this.getSnacks(callback)
       })
