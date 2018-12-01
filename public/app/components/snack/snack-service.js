@@ -22,10 +22,12 @@ export default class SnackService {
     return _snacks
   }
 
-  addSnack() {
-    _snackApi.post('')
+  addSnack(data, getSnacks) {
+    debugger
+    _snackApi.post('', data)
       .then(res => {
-        _snacks = res.data.map(s => new Snack(s))
+
+        getSnacks()
       })
   }
 }

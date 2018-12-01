@@ -21,7 +21,8 @@ export default class Snack {
       }
     }
     return `
-     <div class="card-deck mx-1">
+     
+    <div class=" my-1 col-sm-12 col-md-6 col-lg-3">
       <div class="card">
         <img class="card-img-top" src="${this.img}">
         <div class="card-body">

@@ -30,6 +30,7 @@ router.get('/:id/comments', (req, res, next) => {
 
 //post/create a new snack
 router.post('/', (req, res, next) => {
+  req.body.creatorId = req.session.uid
   Snacks.create(req.body)
     .then(snack => res.send(snack))
     .catch(next)
