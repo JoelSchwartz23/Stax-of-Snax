@@ -11,7 +11,7 @@
   max-width: 18rem;
   box-shadow: 0px 0px 3px grey;
   transition: .3s linear;
-  background-color: rgba(128, 128, 128, 0.699);
+  background-color: rgba(128, 128, 128, 0.918);
 }
 
 .card:hover{
@@ -37,8 +37,10 @@ h3{
     color:black;
 }
 
-h1{
- color: #ffc24f;
+h4{
+  position: absolute;
+  top: 79px;
+  color: #ffc24f;
   text-shadow: 0px 0px 6px black;
 }
 
@@ -46,3 +48,37 @@ h1{
   color: #ffc24f;
   text-shadow: 0px 0px 6px black;
 }
+
+.snacktext{
+  color: #ffc24f;
+  text-shadow: 0px 0px 6px black;
+}
+
+.login{
+  justify-content: flex-end;
+}
+
+.loginform{
+  justify-content: center
+}
+
+.cookies{
+  color: #ffc24f;
+  text-shadow: 0px 0px 6px black;
+}
+
+.registerform{
+  color: #ffc24f;
+  text-shadow: 0px 0px 6px black;
+}
+
+ .snackcomments{
+  background-color: rgba(128, 128, 128, 0.918);
+  width: 40vh;
+} 
+
+.snackimg{
+  width: 60vh;
+}
+
+

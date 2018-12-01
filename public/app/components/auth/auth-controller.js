@@ -26,14 +26,14 @@ export default class AuthController {
 
   showLoginForm() {
     let template = `
-    <h1>LOG IN HERE</h1>
-  <form onsubmit="app.controllers.authController.login(event)">
+    <h4 class="d-flex">LOG IN HERE</h4>
+  <form class="mx-3" onsubmit="app.controllers.authController.login(event)">
     <div class="form-group">
-      <label for="usernameInput">Username</label>
+      <label for="usernameInput"><b>Username</b</label>
       <input name="username" type="text" class="form-control" id="usernameInput">
    </div>
       <div class="form-group">
-        <label for="passwordInput">Password</label>
+        <label for="passwordInput"><b>Password</b</label>
         <input type="password" name="password" class="form-control" id="passwordInput">
     </div>
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -59,22 +59,22 @@ export default class AuthController {
   showSignUpForm() {
     // debugger
     let template = `
-    <h1>SIGN UP HERE</h1>
+    <h4>SIGN UP HERE</h4>
   <form onsubmit="app.controllers.authController.register(event)">
   <div class="form-group" >
-      <label for="usernameInput">Username</label>
+      <label for="usernameInput"><b>Username</b></label>
       <input type="text" name="username" class="form-control" id="usernameInput">
    </div>
     <div class="form-group">
-      <label for="emailInput">Email Address</label>
+      <label for="emailInput"><b>Email Address</b></label>
       <input type="email" name="email" class="form-control" id="emailInput">
-        <small class="form-text text-muted">We'll never share your email with anyone</small>
+        <small class="registerform"><b>We'll never share your email with anyone</b></small>
    </div>
       <div class="form-group">
-        <label for="passwordInput">Password</label>
+        <label for="passwordInput"><b>Password</b></label>
         <input type="password" name="password" class="form-control" id="passwordInput">
     </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn">Submit</button>
 </form>
 `
     document.getElementById('loginStuff').innerHTML = template
