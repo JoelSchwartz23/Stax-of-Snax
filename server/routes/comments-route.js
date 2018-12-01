@@ -1,12 +1,12 @@
 let router = require('express').Router()
 let Comments = require('../models/comment-model')
 
-//GET
-// router.get('/', (req, res, next) => {
-//   Comments.find({})
-//     .then(comments => res.send(comments))
-//     .catch(next)
-// })
+// GET
+router.get('/', (req, res, next) => {
+  Comments.find({})
+    .then(comments => res.send(comments))
+    .catch(next)
+})
 
 router.get("/:snackId", (req, res, next) => {
   Comments.find({ snackId: req.params.snackId })
