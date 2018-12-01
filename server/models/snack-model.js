@@ -23,7 +23,6 @@ let schema = new Schema({
   img: { type: String, required: true },
   description: { type: String, required: true },
   ratings: [rating],
-  comments: {},
   creatorId: { type: ObjectId, ref: "User", required: true },
 
   // originality: { type: String, required: true },

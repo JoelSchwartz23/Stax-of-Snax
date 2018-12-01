@@ -9,41 +9,42 @@ router.get('/', (req, res, next) => {
 })
 
 router.get("/:snackId", (req, res, next) => {
-  Comments.find({})
+  Comments.find({ snackId: req.params.snackId })
     .then(comments => res.send(comments))
     .catch(next)
 })
 
-//get comment and its comments
-// router.get('/:id/comments', (req, res, next) => {
-//   Comments.findById(req.params.id)
-//     .then(comment => {
-//       Comments.find({ commentId: comment._id })
-//         .then(comments => {
-//           return res.send({ comment, comments })
-//         })
-//     })
-//     .catch(next)
-// })
 
 //post/create a new comment
 router.post('/:snackId', (req, res, next) => {
-  Comments.create(req.body)
+  Comments.create({ snackId: req.params.snackId, creatorId: req.session.uid, description: req.body.description })
     .then(comment => res.send(comment))
     .catch(next)
 })
+
+router.post("/:commentId/subcomment", (req, res, next) => {
+  Comments.findById(req.params.commentId)
+    .then(comment => {
+      let newSubComment = {
+        creatorId: req.session.uid,
+        description: req.body.comment
+      }
+      comment.subcomments.push(newSubComment)
+      comment.save(err => {
+        if (err) {
+          return next(err)
+        }
+        res.send("Successfully added comment")
+      })
+    })
+    .catch(next)
+})
+
 
 //delete a comment
-router.delete('/:id', (req, res, next) => {
+router.delete('/:commentId', (req, res, next) => {
   Comments.findOneAndDelete({ _id: req.params.id, creatorId: req.session.uid })
     .then(comment => res.send({ message: "Deleted", data: comment }))
-    .catch(next)
-})
-
-//update/modify an existing comment
-router.put('/:id', (req, res, next) => {
-  Comments.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then(comment => res.send(comment))
     .catch(next)
 })
 
