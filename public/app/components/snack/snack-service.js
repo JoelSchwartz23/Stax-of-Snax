@@ -74,7 +74,7 @@ export default class SnackService {
   }
 
   reply(data, commentId, callback) {
-    _api.post('comments/' + commentId, data)
+    _api.post('comments/' + commentId + '/subcomment', data)
       .then(res => {
         this.getSnacks(callback)
       })

@@ -48,7 +48,7 @@ export default class Snack {
             </div>
             <button type="submit" class="btn btn-success">reply</button>
             </form>
-            ${c.subcomments.forEach(sc => sc.description)}
+            ${buildSubTemp(c.subcomments)}
             </li>`)
     }
     let cookies = ''
@@ -85,4 +85,14 @@ export default class Snack {
      `
 
   }
+}
+
+function buildSubTemp(subcomments) {
+  let temp = ""
+  subcomments.forEach(sc => {
+    temp += `
+   <p>${sc.description} - ${sc.username}</p>
+    `
+  })
+  return temp
 }
