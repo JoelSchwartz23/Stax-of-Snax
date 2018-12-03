@@ -21,10 +21,11 @@
     <div class="row">
       <div class="col-sm-2 d-flex">
         <img src="app/assets/snack (2) (1).png" class="logo" alt="logo" onclick="app.controllers.snackController.rerender()">
-        <h3>Stax of Snax</h3>
+        <h3 onclick="app.controllers.snackController.rerender()">Stax of Snax</h3>
       </div>
       <div class="col-sm-8">
-        <button class="btn btn-lg btn-block" onclick="app.controllers.snackController.addSnackForm()">Add a snack</button>
+        <button class="btn btn-lg btn-block" id="add" onclick="app.controllers.snackController.addSnackForm()">Add a
+          snack</button>
       </div>
       <div class="col-sm-1 d-flex login">
         <span id="login">

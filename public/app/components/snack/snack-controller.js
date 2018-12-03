@@ -18,6 +18,7 @@ export default class SnackController {
   rerender() {
     document.getElementById('main-content').hidden = false
     document.getElementById("snack-details").innerHTML = ``
+
   }
 
   drawSnackData() {

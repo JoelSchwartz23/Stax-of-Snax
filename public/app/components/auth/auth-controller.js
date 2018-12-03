@@ -23,7 +23,7 @@ function drawLogout() {
 export default class AuthController {
   constructor(auth) {
     _authService = auth
-    _authService.authenticate(drawLogout)
+    _authService.authenticate(drawLogout, drawUserLogin)
   }
 
   showLoginForm() {
@@ -70,7 +70,7 @@ export default class AuthController {
     <div class="form-group">
       <label for="emailInput"><b>Email Address</b></label>
       <input type="email" name="email" class="form-control" id="emailInput">
-        <small class="registerform"><b>We'll never share your email with anyone</b></small>
+        <small class="registerform"><b>We'll n̶e̶v̶e̶r̶ share your email with anyone</b></small>
    </div>
       <div class="form-group">
         <label for="passwordInput"><b>Password</b></label>
