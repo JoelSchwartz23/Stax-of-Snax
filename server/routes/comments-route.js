@@ -1,5 +1,6 @@
 let router = require('express').Router()
 let Comments = require('../models/comment-model')
+let expressSession = require('express-session')
 
 // GET
 router.get('/', (req, res, next) => {
