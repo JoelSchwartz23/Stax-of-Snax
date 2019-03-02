@@ -39,7 +39,7 @@ export default class SnackController {
   }
   addSnackForm() {
     let template = `
-    <h2>Add a Snack</h2>
+    <h2 class="mt-4">Add a Snack</h2>
     <form onsubmit="app.controllers.snackController.addSnackData(event)">
     <div class="form-group">
     <label>Img Url</label>
@@ -50,8 +50,8 @@ export default class SnackController {
     <input name="name" type="text" class="form-control" id="addSnackForm">
     </div>
     <div class="form-group">
-    <input name="snackBrand" type="text" class="form-control" id="addSnackForm">
     <label>Brand</label>
+    <input name="snackBrand" type="text" class="form-control" id="addSnackForm">
     </div>
     <div class="form-group">
     <label>Description</label>
