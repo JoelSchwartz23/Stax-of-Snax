@@ -11,7 +11,6 @@ export default class Snack {
     if (this.rating) {
       this.rating = Math.floor(this.rating / data.ratings.length)
     }
-
   }
 
   getSnackTemplate() {
