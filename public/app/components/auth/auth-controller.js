@@ -13,7 +13,7 @@ function drawUserLogin() {
 
 function drawLogout() {
   console.log('logged in')
-  document.getElementById('login').innerHTML = `<button class="btn btn-success" onclick="app.controllers.authController.logout()">Log Out</button>`
+  document.getElementById('login').innerHTML = `<button class="btn" onclick="app.controllers.authController.logout()">Log Out</button>`
   document.getElementById('signUp').innerHTML = ``
   document.getElementById('loginStuff').innerHTML = ``
   document.getElementById("add").hidden = false
